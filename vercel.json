@@ -1,0 +1,15 @@
+{
+	"headers": [
+		{
+			"source": "/",
+			"headers": [
+				{
+					"key": "Cache-Control",
+					"value": "s-maxage=2592000"
+				}
+			]
+		}
+	],
+
+	"cleanUrls": true
+}
