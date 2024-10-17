@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>MultiAccounts chrome extension - kfcinjiochnfpcmgckfgfmfmblokkllm</title>
+</head>
+
+<body>
+    <script type="module">
+        const iFrame = document.createElement("iframe");
+        const siteUrl = location.hash.slice(1);
+        URL.canParse(siteUrl) && (iFrame.src = siteUrl);
+        document.body.prepend(iFrame);
+
+        onmessage = (event) => {
+            if (event.data?.[0] === "navigate") {
+                const [_, url, title, favIcon] = event.data;
+                url && (location.hash = url);
+                title && (document.title = title);
+                favIcon && (document.head.querySelector("link[rel='icon']")["href"] = favIcon);
+            }
+        };
+    </script>
+    <style>
+        :scope {
+            color-scheme: light dark;
+        }
+
+        html {
+            overflow-y: hidden;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 99.8vh;
+            border: none;
+            overflow-y: hidden;
+        }
+    </style>
+</body>
+
+</html>
